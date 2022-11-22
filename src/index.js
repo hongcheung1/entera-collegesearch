@@ -10,10 +10,10 @@ import {
 
 // referenced from https://collegescorecard.ed.gov/data/documentation/
 const CollegeEndpoint = "https://api.data.gov/ed/collegescorecard/v1/";
-const CollegeAPIKey = REACT_APP_College_API_Key;
+const CollegeAPIKey = process.env.REACT_APP_College_API_Key;
 
 const GoogleMapEndponit = "https://maps.googleapis.com/maps/api/";
-const GoogleMapAPIKey = REACT_APP_Google_Map_API_Key;
+const GoogleMapAPIKey = process.env.REACT_APP_Google_Map_API_Key;
 
 const fields = "id,school.name,location.lat,location.lon"; // fields name list
 
