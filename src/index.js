@@ -5,7 +5,7 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker,
+  Marker
 } from "react-google-maps";
 
 // referenced from https://collegescorecard.ed.gov/data/documentation/
@@ -23,7 +23,7 @@ const MyMapComponent = compose(
     googleMapURL: `${GoogleMapEndponit}js?key=${GoogleMapAPIKey}&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />,
+    mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,
   withGoogleMap
@@ -33,7 +33,7 @@ const MyMapComponent = compose(
     defaultZoom={4}
     defaultCenter={{ lat: 41.850033, lng: -87.6500523 }}
   >
-    {props.isMarkerShown && props.marks.length
+    {props.isMarkerShown && props.marks && props.marks.length
       ? props.marks.map((mark, index) => (
           <Marker
             key={index}
@@ -49,7 +49,7 @@ class App extends React.Component {
   state = {
     marks: [],
     keyword: "",
-    perPage: 20, // default count is 20, limit is 100
+    perPage: 20 // default count is 20, limit is 100
   };
 
   handleSearch = (event) => {
@@ -59,7 +59,7 @@ class App extends React.Component {
 
   handleChange = (event) => {
     this.setState({
-      keyword: event.target.value,
+      keyword: event.target.value
     });
   };
 
@@ -68,7 +68,7 @@ class App extends React.Component {
 
     if (number && number > 0 && number < 101) {
       this.setState({
-        perPage: event.target.value,
+        perPage: event.target.value
       });
     }
   };
@@ -82,7 +82,7 @@ class App extends React.Component {
         .then((res) => {
           console.log(res);
           this.setState({
-            marks: res.results,
+            marks: res.results
           });
         });
     } catch (e) {
