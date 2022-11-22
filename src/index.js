@@ -5,15 +5,15 @@ import {
   withScriptjs,
   withGoogleMap,
   GoogleMap,
-  Marker
+  Marker,
 } from "react-google-maps";
 
 // referenced from https://collegescorecard.ed.gov/data/documentation/
 const CollegeEndpoint = "https://api.data.gov/ed/collegescorecard/v1/";
-const CollegeAPIKey = "WENVSR4AJJlU7DRV7qbBr846NXCzPxmB2muKpu11";
+const CollegeAPIKey = REACT_APP_College_API_Key;
 
 const GoogleMapEndponit = "https://maps.googleapis.com/maps/api/";
-const GoogleMapAPIKey = "AIzaSyBFUUmt51SMj4q5aATgbh3b6olkDYLx4y8";
+const GoogleMapAPIKey = REACT_APP_Google_Map_API_Key;
 
 const fields = "id,school.name,location.lat,location.lon"; // fields name list
 
@@ -23,7 +23,7 @@ const MyMapComponent = compose(
     googleMapURL: `${GoogleMapEndponit}js?key=${GoogleMapAPIKey}&v=3.exp&libraries=geometry,drawing,places`,
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `400px` }} />,
-    mapElement: <div style={{ height: `100%` }} />
+    mapElement: <div style={{ height: `100%` }} />,
   }),
   withScriptjs,
   withGoogleMap
@@ -49,7 +49,7 @@ class App extends React.Component {
   state = {
     marks: [],
     keyword: "",
-    perPage: 20 // default count is 20, limit is 100
+    perPage: 20, // default count is 20, limit is 100
   };
 
   handleSearch = (event) => {
@@ -59,7 +59,7 @@ class App extends React.Component {
 
   handleChange = (event) => {
     this.setState({
-      keyword: event.target.value
+      keyword: event.target.value,
     });
   };
 
@@ -68,7 +68,7 @@ class App extends React.Component {
 
     if (number && number > 0 && number < 101) {
       this.setState({
-        perPage: event.target.value
+        perPage: event.target.value,
       });
     }
   };
@@ -82,7 +82,7 @@ class App extends React.Component {
         .then((res) => {
           console.log(res);
           this.setState({
-            marks: res.results
+            marks: res.results,
           });
         });
     } catch (e) {
